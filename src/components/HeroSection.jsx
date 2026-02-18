@@ -53,7 +53,15 @@ const HeroSection = () => {
     }, [displayText, isDeleting, roleIndex]);
 
     // Floating particles
-    const particles = Array.from({ length: 20 }, (_, i) => ({
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const particles = Array.from({ length: isMobile ? 6 : 20 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
