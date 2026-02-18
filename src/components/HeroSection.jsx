@@ -61,7 +61,7 @@ const HeroSection = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const particles = Array.from({ length: isMobile ? 6 : 20 }, (_, i) => ({
+    const particles = isMobile ? [] : Array.from({ length: 20 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
@@ -78,9 +78,13 @@ const HeroSection = () => {
             {/* Background grid */}
             <div className="absolute inset-0 line-grid opacity-30" />
 
-            {/* Orbs */}
-            <div className="orb orb-1 animate-float" />
-            <div className="orb orb-2 animate-float-slow" />
+            {/* Orbs - Desktop only */}
+            {!isMobile && (
+                <>
+                    <div className="orb orb-1 animate-float" />
+                    <div className="orb orb-2 animate-float-slow" />
+                </>
+            )}
 
             {/* Particles */}
             {particles.map((p) => (
