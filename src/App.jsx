@@ -12,7 +12,7 @@ import AdminLayout from './admin/AdminLayout';
 import AdminDashboard from './admin/AdminDashboard';
 import ProjectManager from './admin/ProjectManager';
 import ServiceManager from './admin/ServiceManager';
-import Cursor from './components/Cursor';
+
 
 // Public portfolio page
 const PortfolioPage = () => (
@@ -34,7 +34,6 @@ function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <SmoothingScroll>
-        <Cursor />
         <Routes>
           {/* Public Site */}
           <Route path="/" element={<PortfolioPage />} />
